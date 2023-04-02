@@ -1,5 +1,6 @@
 import { IonButton } from "@ionic/react";
 import React, { useState } from "react";
+import { API } from "../services/api";
 
 const Play = () => {
   const [playerSelection, setPlayer] = useState("");
@@ -51,8 +52,9 @@ const Play = () => {
     }
   };
 
-  const handleClick = () => {
-    computeResult();
+  const handleClick = async () => {
+    const result = await API.get("/test1");
+    return console.log(result);
   };
 
   return (
