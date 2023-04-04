@@ -1,5 +1,5 @@
 import { IonButton } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { API } from "../services/api";
 
 const Play = () => {
@@ -23,6 +23,18 @@ const Play = () => {
   ];
 
   let historical:any[] = [];
+ 
+  const getHistorical = async () => {
+    const result = await API.get("/historical");
+    historical = result.data.historical;
+
+    console.log(historical);
+  }
+
+  useEffect(() => {
+    getHistorical();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const randomChoice = () => {
     const randomNumber = Math.floor(Math.random() * choices.length);
@@ -42,20 +54,17 @@ const Play = () => {
     getHistorical();
   };
 
-  const getHistorical = async () => {
-    const result = await API.get("/historical");
-    historical = result.data.historical;
-
-    console.log(historical);
-  }
-
-
-  const handleClick = () => {
+  const handlePlay = () => {
 
     sendHistorical();
     // getHistorical();
 
   };
+
+
+  const handleReset = () => {
+    historical = [];
+  }
 
   return (
     <>
@@ -65,7 +74,9 @@ const Play = () => {
       <h3> {wins} </h3>
       <h3> {losses} </h3>
       <h3> {ties} </h3> */}
-      <IonButton onClick={handleClick}> Jugar </IonButton>
+      <IonButton onClick={handlePlay}> Jugar </IonButton>
+      <IonButton onClick={handleReset}> Reiniciar </IonButton>
+
     </>
   );
 };
