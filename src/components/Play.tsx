@@ -23,7 +23,7 @@ const Play = () => {
   ];
 
   let historical:any[] = [];
-  
+ 
   const getHistorical = async () => {
     const result = await API.get("/historical");
     historical = result.data.historical;
@@ -54,14 +54,13 @@ const Play = () => {
     getHistorical();
   };
 
-
-
   const handlePlay = () => {
 
     sendHistorical();
     // getHistorical();
 
   };
+
 
   const handleReset = () => {
     historical = [];
@@ -77,6 +76,7 @@ const Play = () => {
       <h3> {ties} </h3> */}
       <IonButton onClick={handlePlay}> Jugar </IonButton>
       <IonButton onClick={handleReset}> Reiniciar </IonButton>
+
     </>
   );
 };
