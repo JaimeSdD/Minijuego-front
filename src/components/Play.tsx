@@ -26,9 +26,11 @@ const Play = () => {
  
   const getHistorical = async () => {
     const result = await API.get("/historical");
-    historical = result.data.historical;
+    if(result.data){
+      historical = result.data.historical;
+    }
 
-    console.log(historical);
+    console.log(result.data);
   }
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const Play = () => {
     JSON.stringify(historical);
 
     const result = await API.post("/player", {historical});
-    console.log(result.config.data);
+    console.log(result);
 
     getHistorical();
   };
@@ -57,12 +59,12 @@ const Play = () => {
   const handlePlay = () => {
 
     sendHistorical();
-    // getHistorical();
 
   };
 
 
-  const handleReset = () => {
+  const handleReset = async () => {
+    await API.delete("/reset");
     historical = [];
   }
 
