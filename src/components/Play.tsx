@@ -27,10 +27,9 @@ const Play = () => {
   const getHistorical = async () => {
     const result = await API.get("/historical");
     if(result.data){
-      historical = result.data.historical;
+      historical = result.data;
+      console.log(historical);
     }
-
-    console.log(result.data);
   }
 
   useEffect(() => {
@@ -46,14 +45,12 @@ const Play = () => {
   const sendHistorical = async () => {
 
     const player = randomChoice();
-
+    
     historical.push({player});
-    JSON.stringify(historical);
+    
+    const result = await API.post("/player", JSON.stringify({historical}));
+    historical = result.data;
 
-    const result = await API.post("/player", {historical});
-    console.log(result);
-
-    getHistorical();
   };
 
   const handlePlay = () => {
