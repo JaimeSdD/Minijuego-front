@@ -1,9 +1,7 @@
 import { randomChoice, updateHistorical } from "../components/GameLogic";
-import { API, getHistorical } from "../services/api";
-
+import { API, getHistorical, sendHistorical } from "../services/api";
 
 describe("GameLogic functions", () => {
-
   it("should return a value from the array (randomChoice function)", () => {
     const choices = ["piedra", "papel", "tijeras"];
     const choice = randomChoice();
@@ -18,7 +16,8 @@ describe("GameLogic functions", () => {
     const mockResponse = [
       { player: "piedra", computer: "papel", result: "derrota" },
     ];
-    API.get = jest.fn().mockResolvedValue({data: mockResponse});
+
+    API.get = jest.fn().mockResolvedValue({ data: mockResponse });
 
     const data = await getHistorical();
     expect(data).toEqual(mockResponse);
@@ -26,15 +25,33 @@ describe("GameLogic functions", () => {
 
   it("should update the historical array with the new player choice", () => {
     const playerChoice = "piedra";
-    const historical = [{ player: "papel", computer: "piedra", result: "tijeras"}];
+    const historical = [
+      { player: "papel", computer: "piedra", result: "victoria" },
+    ];
     const expectedHistorical = [
-      { player: "papel", computer: "piedra", result: "tijeras"},
+      { player: "papel", computer: "piedra", result: "victoria" },
       { player: "piedra" },
     ];
+
     const result = updateHistorical(playerChoice, historical);
     expect(result).toEqual(expectedHistorical);
   });
 
+  it("should send the data to the API and get a response", async () => {
+    const newHistorical = [
+      { player: "papel", computer: "piedra", result: "victoria" },
+      { player: "piedra" },
+    ];
+    const mockResponse = [
+      { player: "papel", computer: "piedra", result: "victoria" },
+      { player: "piedra", computer: "tijeras", result: "victoria" },
+    ];
+    const expectedPayload = JSON.stringify({ historical: newHistorical });
 
-})
+    API.post = jest.fn().mockResolvedValue({ data: mockResponse });
 
+    const data = await sendHistorical(expectedPayload);
+    expect(API.post).toHaveBeenCalledWith("/player", expectedPayload);
+    expect(data).toEqual(mockResponse);
+  });
+});
