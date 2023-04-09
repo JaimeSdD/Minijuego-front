@@ -11,3 +11,17 @@ export const API = axios.create({
     timeout: 5000,
     headers: APIHeaders,
 });
+
+export const getHistorical = async () => {
+  const response = await API.get("/historical");
+  return response.data;
+}
+
+export  const sendHistorical = async (historical) => {
+  const response = await API.post("/player", historical);
+  return response.data;
+};
+
+export const deleteHistorical = async () => {
+  await API.delete("/reset");
+}
