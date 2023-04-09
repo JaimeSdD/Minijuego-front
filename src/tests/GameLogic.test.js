@@ -1,5 +1,5 @@
 import { randomChoice, updateHistorical } from "../components/GameLogic";
-import { API, getHistorical, sendHistorical } from "../services/api";
+import { API, deleteHistorical, getHistorical, sendHistorical } from "../services/api";
 
 describe("GameLogic functions", () => {
   it("should return a value from the array (randomChoice function)", () => {
@@ -54,4 +54,12 @@ describe("GameLogic functions", () => {
     expect(API.post).toHaveBeenCalledWith("/player", expectedPayload);
     expect(data).toEqual(mockResponse);
   });
+
+  it("should call the API with the correct endpoint", async () => {
+
+    API.delete = jest.fn().mockResolvedValue();
+    await deleteHistorical();
+    expect(API.delete).toHaveBeenCalledWith("/reset");
+  })
+
 });
