@@ -5,21 +5,11 @@ import {
   sendHistorical,
 } from "../services/api";
 
-const choices = [
-  {
-    name: "piedra",
-  },
-  {
-    name: "papel",
-  },
-  {
-    name: "tijeras",
-  },
-];
+const choices = ["piedra", "papel", "tijeras"]
 
-const randomChoice = () => {
+export const randomChoice = () => {
   const randomNumber = Math.floor(Math.random() * choices.length);
-  return choices[randomNumber].name;
+  return choices[randomNumber];
 };
 
 const GameLogic = () => {

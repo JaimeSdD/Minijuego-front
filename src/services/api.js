@@ -13,14 +13,14 @@ const API = axios.create({
 });
 
 export const getHistorical = async () => {
-  const result = await API.get("/historical");
-  console.log(result.data);
-  return result.data;
+  const response = await API.get("/historical");
+  console.log(response.data);
+  return response.data;
 }
 
 export  const sendHistorical = async (historical) => {
-  const result = await API.post("/player", historical);
-  return result.data;
+  const response = await API.post("/player", historical);
+  return response.data;
 };
 
 export const deleteHistorical = async () => {
