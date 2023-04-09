@@ -13,6 +13,7 @@ export const randomChoice = () => {
 };
 
 const GameLogic = () => {
+    
   const [historical, setHistorical] = useState([]);
 
   const refreshHistorical = async () => {

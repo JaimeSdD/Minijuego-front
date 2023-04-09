@@ -6,7 +6,7 @@ const APIHeaders = {
   "Access-Control-Allow-Origin": "*",
 };
 
-const API = axios.create({
+export const API = axios.create({
     baseURL: "http://127.0.0.1:8000/api",
     timeout: 5000,
     headers: APIHeaders,
@@ -14,7 +14,6 @@ const API = axios.create({
 
 export const getHistorical = async () => {
   const response = await API.get("/historical");
-  console.log(response.data);
   return response.data;
 }
 
