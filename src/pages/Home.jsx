@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
-import GameLogic from '../components/GameLogic';
+import GameRender from '../components/GameRender';
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <GameLogic/>
+        <GameRender/>
       </IonContent>
     </IonPage>
   );

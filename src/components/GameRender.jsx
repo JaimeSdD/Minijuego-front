@@ -6,8 +6,9 @@ import {
 } from "../services/api";
 import GameCard from "./GameCard";
 import Buttons from "./Buttons";
+import Result from "./Result";
 
-const choices = ["piedra", "papel", "tijeras"]
+const choices = ["piedra", "papel", "tijeras"];
 
 export const randomChoice = () => {
   const randomNumber = Math.floor(Math.random() * choices.length);
@@ -15,15 +16,14 @@ export const randomChoice = () => {
 };
 
 export const updateHistorical = (playerChoice, historical) => {
-  return [...historical, {player: playerChoice}];
-}
+  return [...historical, { player: playerChoice }];
+};
 
 export const sendData = async (newHistorical) => {
-  return await sendHistorical(JSON.stringify({historical: newHistorical}));
-}
+  return await sendHistorical(JSON.stringify({ historical: newHistorical }));
+};
 
-const GameLogic = () => {
-
+const GameRender = () => {
   const [historical, setHistorical] = useState([]);
 
   const refreshHistorical = async () => {
@@ -38,7 +38,6 @@ const GameLogic = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const handlePlay = async () => {
     const player = randomChoice();
     const newHistorical = updateHistorical(player, historical);
@@ -52,12 +51,12 @@ const GameLogic = () => {
   };
 
   return (
-  <>
-    <GameCard historical={historical} />
-    <Buttons handlePlay = {handlePlay} handleReset={handleReset}/>
-
-  </>
+    <>
+      <Result result={historical[historical.length - 1]?.result}/>
+      <GameCard historical={historical} />
+      <Buttons handlePlay={handlePlay} handleReset={handleReset} />
+    </>
   );
 };
 
-export default GameLogic;
+export default GameRender;
