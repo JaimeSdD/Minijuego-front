@@ -1,9 +1,7 @@
-import { IonTitle } from "@ionic/react"
+import { IonTitle } from "@ionic/react";
 
-const Result = ({result}) => {
-  return (
-    <IonTitle> {result.toUpperCase()}</IonTitle>
-  )
-}
+const Result = ({ result }) => {
+  return <>{result && <IonTitle> {result.toUpperCase()}</IonTitle>}</>;
+};
 
-export default Result
+export default Result;

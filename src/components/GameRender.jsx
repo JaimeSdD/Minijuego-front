@@ -7,6 +7,7 @@ import {
 import GameCard from "./GameCard";
 import Buttons from "./Buttons";
 import Result from "./Result";
+import Historical from "./Historical";
 
 const choices = ["piedra", "papel", "tijeras"];
 
@@ -55,6 +56,7 @@ const GameRender = () => {
       <Result result={historical[historical.length - 1]?.result}/>
       <GameCard historical={historical} />
       <Buttons handlePlay={handlePlay} handleReset={handleReset} />
+      <Historical historical={historical} />
     </>
   );
 };
