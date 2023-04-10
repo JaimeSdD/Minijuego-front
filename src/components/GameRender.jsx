@@ -39,11 +39,15 @@ const GameRender = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handlePlay = async () => {
+  const handlePlay = () => {
     const player = randomChoice();
     const newHistorical = updateHistorical(player, historical);
-    const result = await sendData(newHistorical);
-    setHistorical(result);
+    setHistorical(newHistorical);
+
+    setTimeout(async () => {
+      const response = await sendData(newHistorical);
+      setHistorical(response);
+    }, 2000);
   };
 
   const handleReset = async () => {
