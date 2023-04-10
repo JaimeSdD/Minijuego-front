@@ -1,4 +1,4 @@
-import { randomChoice, updateHistorical } from "../components/GameLogic";
+import { randomChoice, updateHistorical } from "../components/GameRender";
 import { API, deleteHistorical, getHistorical, sendHistorical } from "../services/api";
 
 describe("GameLogic functions", () => {
