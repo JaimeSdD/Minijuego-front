@@ -26,6 +26,7 @@ export const sendData = async (newHistorical) => {
 
 const GameRender = () => {
   const [historical, setHistorical] = useState([]);
+  const [playing, setPlaying] = useState(false);
 
   const refreshHistorical = async () => {
     const historicalData = await getHistorical();
@@ -40,14 +41,21 @@ const GameRender = () => {
   }, []);
 
   const handlePlay = () => {
+    setPlaying(true);
+
     const player = randomChoice();
     const newHistorical = updateHistorical(player, historical);
-    setHistorical(newHistorical);
+    setHistorical([...historical, {}]);
+
+    setTimeout(() => {
+      setHistorical(newHistorical);
+    }, 1500);
 
     setTimeout(async () => {
       const response = await sendData(newHistorical);
       setHistorical(response);
-    }, 2000);
+      setPlaying(false);
+    }, 2500);
   };
 
   const handleReset = async () => {
@@ -59,7 +67,7 @@ const GameRender = () => {
     <>
       <Result result={historical[historical.length - 1]?.result}/>
       <GameCard historical={historical} />
-      <Buttons handlePlay={handlePlay} handleReset={handleReset} />
+      <Buttons handlePlay={handlePlay} handleReset={handleReset} playing={playing}/>
       <Historical historical={historical} />
     </>
   );

@@ -31,7 +31,7 @@ const GameCard = ({ historical }) => {
       </div>
       </IonCard>
       <IonCard>
-      <IonCardTitle>La máquina: {newTurn?.computer}</IonCardTitle>
+      <IonCardTitle>Máquina: {newTurn?.computer}</IonCardTitle>
       <div className="image-wrapper">
         <img src={computerImage} alt={newTurn?.computer}/>
       </div>

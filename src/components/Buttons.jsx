@@ -1,10 +1,10 @@
 import { IonButton } from "@ionic/react";
 
-const Buttons = ({handlePlay, handleReset}) => {
+const Buttons = ({handlePlay, handleReset, playing}) => {
   return (
     <>
-      <IonButton onClick={handlePlay}> Jugar </IonButton>
-      <IonButton onClick={handleReset}> Reiniciar </IonButton>
+      <IonButton onClick={handlePlay} disabled={playing}> Jugar </IonButton>
+      <IonButton onClick={handleReset} disabled={playing}> Reiniciar </IonButton>
 
     </>
   );
