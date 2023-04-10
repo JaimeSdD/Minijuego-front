@@ -4,6 +4,8 @@ import {
   getHistorical,
   sendHistorical,
 } from "../services/api";
+import GameCard from "./GameCard";
+import Buttons from "./Buttons";
 
 const choices = ["piedra", "papel", "tijeras"]
 
@@ -49,10 +51,13 @@ const GameLogic = () => {
     setHistorical([]);
   };
 
-  return {
-    handlePlay,
-    handleReset,
-  };
+  return (
+  <>
+    <GameCard historical={historical} />
+    <Buttons handlePlay = {handlePlay} handleReset={handleReset}/>
+
+  </>
+  );
 };
 
 export default GameLogic;

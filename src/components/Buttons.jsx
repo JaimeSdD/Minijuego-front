@@ -1,10 +1,6 @@
 import { IonButton } from "@ionic/react";
-import GameLogic from "./GameLogic";
 
-const Buttons = () => {
-
-  const {handlePlay, handleReset} = GameLogic();
-
+const Buttons = ({handlePlay, handleReset}) => {
   return (
     <>
       <IonButton onClick={handlePlay}> Jugar </IonButton>
