@@ -1,9 +1,11 @@
 import { IonItem, IonLabel, IonList } from "@ionic/react";
 
 const Historical = ({ historical }) => {
+  const historicalReversed = [...historical].reverse();
+
   return (
     <IonList>
-      {historical.map((turn, index) => (
+      {historicalReversed.map((turn, index) => (
         <IonItem key={index}>
           <IonLabel>
             <p>Jugador: {turn.player}</p>

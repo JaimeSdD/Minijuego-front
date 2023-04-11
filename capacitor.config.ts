@@ -5,6 +5,9 @@ const config: CapacitorConfig = {
   appName: 'minijuego-front',
   webDir: 'build',
   bundledWebRuntime: false,
+  server: {
+    url:"http://192.168.1.114:3000"
+  }
 };
 
 export default config;

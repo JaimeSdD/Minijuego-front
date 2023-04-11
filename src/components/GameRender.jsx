@@ -65,7 +65,6 @@ const GameRender = () => {
 
   return (
     <>
-      <h1>Hey</h1>
       <Result result={historical[historical.length - 1]?.result}/>
       <GameCard historical={historical} />
       <Buttons handlePlay={handlePlay} handleReset={handleReset} playing={playing}/>
