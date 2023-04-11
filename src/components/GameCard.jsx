@@ -23,7 +23,7 @@ const GameCard = ({ historical }) => {
 
 
   return (
-    <div className="image-container">
+    <div className="cards-container">
       <IonCard>
       <IonCardTitle>Jugador: {newTurn?.player}</IonCardTitle>
       <div className="image-wrapper">

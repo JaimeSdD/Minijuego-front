@@ -7,10 +7,10 @@ const Home = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Piedra, papel, tijeras</IonTitle>
+          <IonTitle style={{textAlign: "center"}}>Piedra, papel, tijeras</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen color="dark">
         <GameRender/>
       </IonContent>
     </IonPage>

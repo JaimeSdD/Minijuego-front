@@ -1,9 +1,6 @@
-.image-container {
-  max-width: 40%;
-  height: 77%;
+.cards-container {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .image-wrapper {
@@ -19,11 +16,3 @@ img {
   height: 100%;
   object-fit: contain;
 }
-
-
-
-  
-  
-  
-  
-  

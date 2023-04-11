@@ -1,7 +1,11 @@
 import { IonTitle } from "@ionic/react";
 
 const Result = ({ result }) => {
-  return <>{result && <IonTitle> {result.toUpperCase()}</IonTitle>}</>;
+  return (
+    <div style={{ textAlign: "center", padding: "20px"}}>
+      {result && <IonTitle>{result.toUpperCase()}</IonTitle>}
+    </div>
+  );
 };
 
 export default Result;
