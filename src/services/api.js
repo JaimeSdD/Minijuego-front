@@ -7,8 +7,7 @@ const APIHeaders = {
 };
 
 export const API = axios.create({
-    baseURL: "http://127.0.0.1:8000/api",
-    timeout: 5000,
+    baseURL: navigator.userAgent.toLowerCase().indexOf('android ') !== -1? "http://10.0.2.2:8000/api"  : "http://127.0.0.1:8000/api",
     headers: APIHeaders,
 });
 
