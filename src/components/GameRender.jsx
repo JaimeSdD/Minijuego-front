@@ -65,8 +65,7 @@ const GameRender = () => {
 
   return (
     <>
-      <h1>{navigator.userAgent}</h1>
-      <h1>{navigator.userAgent.toLowerCase().indexOf('android ') !== -1 ? "funciona" : "nop"}</h1>
+      <h1>Hey</h1>
       <Result result={historical[historical.length - 1]?.result}/>
       <GameCard historical={historical} />
       <Buttons handlePlay={handlePlay} handleReset={handleReset} playing={playing}/>
